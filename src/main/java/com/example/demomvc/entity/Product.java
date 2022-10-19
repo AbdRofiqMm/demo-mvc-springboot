@@ -1,4 +1,4 @@
-package com.example.demomvc.controllers;
+package com.example.demomvc.entity;
 
 public class Product {
     private Long id;
