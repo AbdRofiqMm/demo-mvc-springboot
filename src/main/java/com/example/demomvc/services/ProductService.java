@@ -3,6 +3,7 @@ package com.example.demomvc.services;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -28,6 +29,19 @@ public class ProductService {
 
     public void addProduct(Product product) {
         product.setId(RandomNumber.getRandom(1000, 9999));
+        products.add(product);
+    }
+
+    public void deleteById(long id) {
+        products.removeIf(p -> p.getId() == id);
+    }
+
+    public Optional<Product> findById(long id) {
+        return products.stream().filter(p -> p.getId() == id).findFirst();
+    }
+
+    public void updateProduct(Product product) {
+        deleteById(product.getId());
         products.add(product);
     }
 
